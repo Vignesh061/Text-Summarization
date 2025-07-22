@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="app-title">Text Summarizer</h1>
+        <p class="app-subtitle">Transform long text into concise key points</p>
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <div class="container">
+        <div class="app-container">
+            <!-- Input Section -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h2 class="card-title">Input Text</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label for="input-text">Paste or type your text below:</label>
+                    <textarea id="input-text" placeholder="Enter the text you want to summarize..."></textarea>
+                    <div class="input-stats">
+                        <span id="word-counter">0 words</span>
+                        <span id="char-counter">0 characters</span>
+                    </div>
+                </div>
+                
+                <div class="controls-row">
+                    <div class="summary-length">
+                        <label for="summary-points">Summary length:</label>
+                        <select id="summary-points">
+                            <option value="3">3 points</option>
+                            <option value="5">5 points</option>
+                            <option value="10" selected>10 points</option>
+                            <option value="15">15 points</option>
+                            <option value="20">20 points</option>
+                        </select>
+                    </div>
+                    <button id="summarize-btn">
+                        <i class="fas fa-magic btn-icon"></i>
+                        Summarize
+                    </button>
+                </div>
+                
+                <div class="form-group">
+                    <p class="tip">
+                        <i class="fas fa-lightbulb" style="color: #ffc107;"></i>
+                        <small>Tip: Press Ctrl+Enter to quickly generate summary</small>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Output Section -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <h2 class="card-title">Summary</h2>
+                </div>
+                
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Generating your summary...</p>
+                </div>
+                
+                <div class="summary-result">
+                    <div id="summary-placeholder" class="summary-placeholder">
+                        <i class="fas fa-file-signature" style="font-size: 32px; margin-bottom: 15px;"></i>
+                        <p>Your summary will appear here</p>
+                    </div>
+                    <ul id="summary-output" class="summary-points" style="display: none;"></ul>
+                </div>
+                
+                <div class="action-bar">
+                    <div class="summary-stats">
+                        <small id="summary-stats"></small>
+                    </div>
+                    <div class="copy-btn-wrapper">
+                        <button id="copy-btn" class="copy-btn">
+                            <i class="fas fa-copy"></i> Copy to clipboard
+                        </button>
+                        <span class="tooltip" id="copy-tooltip">Copied!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Text Summarizer &copy; 2025 | Powered by NLP</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
