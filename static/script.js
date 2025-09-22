@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error:', error);
-            summaryOutput.innerHTML = '<li>Error generating summary. Please try again.</li>';
+            // summaryOutput.innerHTML = '<li>Error generating summary. Please try again.</li>';
             summaryOutput.style.display = 'block';
             summaryPlaceholder.style.display = 'none';
         })
