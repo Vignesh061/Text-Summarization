@@ -11,9 +11,11 @@ import os
 # Download necessary NLTK data
 try:
     nltk.data.find('tokenizers/punkt')
+    nltk.data.find('tokenizers/punkt_tab')
     nltk.data.find('corpora/stopwords')
 except LookupError:
     nltk.download('punkt')
+    nltk.download('punkt_tab')  # <-- add this line
     nltk.download('stopwords')
 
 app = Flask(__name__)
